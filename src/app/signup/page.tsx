@@ -19,6 +19,12 @@ export default function SignupPage() {
     setLoading(true)
     setError('')
 
+    if (/[&<>"']/.test(password)) {
+      setError('Password contains an unsupported character. Avoid: & < > " \'')
+      setLoading(false)
+      return
+    }
+
     const supabase = createClient()
     const { data, error: signUpError } = await supabase.auth.signUp({
       email,
@@ -110,6 +116,7 @@ export default function SignupPage() {
               minLength={8}
               className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
             />
+            <p className="text-xs text-slate-400 mt-1">8+ characters. Avoid: &amp; &lt; &gt; &quot; &apos;</p>
           </div>
           <button
             type="submit"
