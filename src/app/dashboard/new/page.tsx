@@ -62,6 +62,7 @@ export default function NewJobAdPage() {
     specialty: [] as string[],
     purpose_other: '',
     benefits_override: '',
+    employer_description: '',
   })
 
   function update(field: string, value: unknown) {
@@ -396,6 +397,20 @@ export default function NewJobAdPage() {
                 className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 resize-none"
               />
               <p className="text-xs text-slate-400 mt-1">The more specific and real this is, the more the ad will stand out.</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">
+                About your company <span className="text-slate-400 font-normal">(optional)</span>
+              </label>
+              <textarea
+                value={form.employer_description}
+                onChange={e => update('employer_description', e.target.value)}
+                rows={4}
+                placeholder="e.g. We're a healthcare staffing agency that's been placing nurses in the Chicago metro for 15 years. Our recruiters specialize in ICU and critical care — we know the facilities, the teams, and what it actually takes to thrive in each one."
+                className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 resize-none"
+              />
+              <p className="text-xs text-slate-400 mt-1">What sets you apart as an employer — keep it to 4 sentences or less. This goes at the end of the ad, after you&apos;ve already made the case for the role.</p>
             </div>
 
             <div className="flex gap-3">

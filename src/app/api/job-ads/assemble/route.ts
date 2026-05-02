@@ -57,6 +57,9 @@ Requirements: ${requirements.join(' | ') || 'none'}
 STANDARD BENEFITS PACKAGE:
 ${benefits || 'None provided'}
 
+EMPLOYER DESCRIPTION (About Us — include verbatim if provided):
+${jobAd.employer_description || 'None provided — omit About Us section'}
+
 RAW JOB DESCRIPTION (for What You\'ll Do and Requirements sections):
 ${jobAd.raw_job_description}
 
@@ -71,7 +74,9 @@ ASSEMBLY RULES:
 
 5. BENEFITS: If standard benefits provided, list them as clean bullet points under a "Benefits" header — one item per bullet, no elaboration needed. If none provided, omit this section entirely.
 
-6. CALL TO ACTION: End with exactly this line, nothing else after it:
+6. ABOUT US: If an employer description is provided, include it verbatim under an "About Us" header — do not rewrite, expand, or summarize it. If none provided, omit this section entirely.
+
+7. CALL TO ACTION: End with exactly this line, nothing else after it:
 Apply now.
 
 FORMAT: Plain text only. No markdown, no asterisks, no bold markers. Use simple dashes (-) for bullets. Separate sections with a blank line. The output will be copied directly into Indeed or an ATS.
