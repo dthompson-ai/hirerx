@@ -350,13 +350,20 @@ export default function JobAdPage({ params, searchParams }: {
               <div className="flex items-center justify-between mb-5">
                 <h2 className="font-semibold text-slate-900">Your job ad</h2>
                 <div className="flex gap-2">
-                  {elements.length > 0 && (
+                  {elements.length > 0 ? (
                     <button
                       onClick={() => setView('review')}
                       className="text-sm text-slate-500 hover:text-slate-700 border border-slate-200 px-3 py-1.5 rounded-lg"
                     >
                       Edit elements
                     </button>
+                  ) : (
+                    <Link
+                      href={`/dashboard/template/${id}/edit`}
+                      className="text-sm text-slate-500 hover:text-slate-700 border border-slate-200 px-3 py-1.5 rounded-lg"
+                    >
+                      Edit job ad
+                    </Link>
                   )}
                   <button
                     onClick={handleCopy}
