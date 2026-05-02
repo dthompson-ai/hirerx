@@ -76,8 +76,8 @@ ASSEMBLY RULES:
 
 6. ABOUT US: If an employer description is provided, include it verbatim under an "About Us" header — do not rewrite, expand, or summarize it. If none provided, omit this section entirely.
 
-7. CALL TO ACTION: End with exactly this line, nothing else after it:
-Apply now.
+7. CALL TO ACTION: End with exactly these two lines, nothing else after them:
+If this sounds like something that interests you, we'd love to set up an appointment to speak with you. Apply now.
 
 FORMAT: Plain text only. No markdown, no asterisks, no bold markers. Use simple dashes (-) for bullets. Separate sections with a blank line. The output will be copied directly into Indeed or an ATS.
 

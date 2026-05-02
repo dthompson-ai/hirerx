@@ -55,7 +55,7 @@ function stitchJobAd(form: TemplateForm): string {
   if (requirements) sections.push(`Preferred Candidate Might...\n${requirements}`)
   const benefits = bulletify(form.benefits)
   if (benefits) sections.push(`Benefits\n${benefits}`)
-  sections.push('Apply now.')
+  sections.push("If this sounds like something that interests you, we'd love to set up an appointment to speak with you. Apply now.")
   return sections.join('\n\n')
 }
 

@@ -29,7 +29,7 @@ function parseOutputSections(text: string): ParsedSection[] {
     const block = blocks[i]
     const firstLine = block.split('\n')[0].trim().toLowerCase()
 
-    if (firstLine === 'apply now.') {
+    if (firstLine.endsWith('apply now.')) {
       result.push({ type: 'cta', content: block })
     } else if (firstLine.startsWith("what you'll do as")) {
       result.push({ type: 'what-youll-do', content: block })

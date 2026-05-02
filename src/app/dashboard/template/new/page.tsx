@@ -53,7 +53,7 @@ function stitchJobAd(form: TemplateForm): string {
   if (requirements) sections.push(`Preferred Candidate Might...\n${requirements}`)
   const benefits = bulletify(form.benefits)
   if (benefits) sections.push(`Benefits\n${benefits}`)
-  sections.push('Apply now.')
+  sections.push("If this sounds like something that interests you, we'd love to set up an appointment to speak with you. Apply now.")
   return sections.join('\n\n')
 }
 
@@ -65,7 +65,7 @@ function parseOutputSections(text: string): ParsedSection[] {
   for (let i = 0; i < blocks.length; i++) {
     const block = blocks[i]
     const firstLine = block.split('\n')[0].trim().toLowerCase()
-    if (firstLine === 'apply now.') { result.push({ type: 'cta', content: block }); continue }
+    if (firstLine.endsWith('apply now.')) { result.push({ type: 'cta', content: block }); continue }
     if (firstLine.startsWith("what you'll do as")) { result.push({ type: 'what-youll-do', content: block }); continue }
     if (firstLine.startsWith('preferred candidate might')) { result.push({ type: 'requirements', content: block }); continue }
     if (firstLine === 'benefits') { result.push({ type: 'benefits', content: block }); continue }
