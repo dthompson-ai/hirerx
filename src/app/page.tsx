@@ -15,7 +15,7 @@ export default function LandingPage() {
               Log in
             </Link>
             <Link
-              href="/signup"
+              href="/signup?plan=free"
               className="bg-sky-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-sky-700 transition-colors"
             >
               Start free
@@ -48,13 +48,13 @@ export default function LandingPage() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
-            href="/signup"
+            href="/signup?plan=free"
             className="inline-block bg-sky-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-sky-700 transition-colors shadow-lg shadow-sky-100"
           >
             Start free — no credit card
           </Link>
           <Link
-            href="/signup"
+            href="/signup?plan=pro"
             className="inline-block border border-slate-200 text-slate-700 px-8 py-4 rounded-xl text-lg font-medium hover:border-slate-300 hover:bg-slate-50 transition-colors"
           >
             Get the AI — $20/month
@@ -130,7 +130,7 @@ export default function LandingPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/signup"
+              <Link href="/signup?plan=free"
                 className="mt-8 block text-center border border-slate-200 text-slate-700 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-50 transition-colors">
                 Start free →
               </Link>
@@ -154,7 +154,7 @@ export default function LandingPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/signup"
+              <Link href="/signup?plan=pro"
                 className="mt-8 block text-center bg-white text-sky-600 py-2.5 rounded-xl text-sm font-semibold hover:bg-sky-50 transition-colors">
                 Get the AI →
               </Link>
@@ -186,7 +186,7 @@ export default function LandingPage() {
                 </li>
               ))}
             </ul>
-            <Link href="/signup"
+            <Link href="/signup?plan=free"
               className="block text-center border border-slate-200 text-slate-700 py-3 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm">
               Start free
             </Link>
@@ -213,7 +213,7 @@ export default function LandingPage() {
                 </li>
               ))}
             </ul>
-            <Link href="/signup"
+            <Link href="/signup?plan=pro"
               className="block text-center bg-sky-600 text-white py-3 rounded-xl font-semibold hover:bg-sky-700 transition-colors text-sm">
               Get started
             </Link>
