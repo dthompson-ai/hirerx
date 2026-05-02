@@ -54,15 +54,15 @@ RAW JOB DESCRIPTION (for What You\'ll Do and Requirements sections):
 ${jobAd.raw_job_description}
 
 ASSEMBLY RULES:
-1. OPPORTUNITY STATEMENT: Exactly 2 sentences. No more, no fewer. Sentence 1 leads with the strongest benefit (pay + shift, or pay + purpose for healthcare roles) — make it specific and dollar-anchored when possible. Sentence 2 closes with what makes this opportunity worth not ignoring. Must feel like you're talking TO the candidate, not AT them. No corporate speak. These two sentences are also the exact right length for an SMS message — write them that way.
+1. OPPORTUNITY STATEMENT: Exactly 2 sentences. No more, no fewer. Target ~65 characters per sentence — the full statement must fit in a standard SMS (160 chars) with room left over for a call to action like "Apply: [link]". Count characters mentally as you write. Sentence 1 leads with the strongest benefit (pay + shift, or pay + purpose for healthcare roles) — make it specific and dollar-anchored when possible. Sentence 2 closes with what makes this opportunity worth not ignoring. Must feel like you're talking TO the candidate, not AT them. No corporate speak.
 
-2. HIGHLIGHT REEL: 5–7 bullet points. Each one is a specific, concrete benefit. Lead with the dollar figure if pay is compelling. Include shift translation (e.g. "M-F schedule — weekends off" not just "first shift"). Include temp-to-perm if applicable. Include healthcare if specific dollar amounts are available.
+2. HIGHLIGHT REEL: 5–7 bullet points. Each bullet is ONE piece of information — no compound bullets joining two ideas with "and". Keep each bullet short and punchy: specific, concrete, scannable at a glance. Lead with the dollar figure if pay is compelling. Translate shifts into life terms (e.g. "Three 12-hr shifts — four days off every week" not just "36 hrs/week"). Include temp-to-perm and healthcare specifics when available.
 
-3. WHAT YOU'LL DO AS A ${jobTitle.toUpperCase()}: 5–7 bullets extracted from the job description. Use "you will" or action verbs. Keep it specific to the role, not generic. The section header must be exactly: "What you'll do as a ${jobTitle}"
+3. WHAT YOU'LL DO AS A ${jobTitle.toUpperCase()}: 5–7 bullets extracted from the job description. Each bullet is a single task or responsibility — short, action-verb-led, no run-ons. Keep it specific to the role. The section header must be exactly: "What you'll do as a ${jobTitle}"
 
-4. REQUIREMENTS: Frame softly. Start section with exactly this header and framing: "Preferred Candidate Might..." — never "Must have", "Required", or "Preferred candidates will have". List only the genuinely important ones (3–5 max). Leave the door open.
+4. REQUIREMENTS: Frame softly. Start section with exactly this header and framing: "Preferred Candidate Might..." — never "Must have", "Required", or "Preferred candidates will have". List only the genuinely important ones (3–5 max). One requirement per bullet — short and plainly stated. Leave the door open.
 
-5. BENEFITS: If standard benefits provided, list them as bullet points under a "Benefits" header. If none provided, omit this section entirely.
+5. BENEFITS: If standard benefits provided, list them as clean bullet points under a "Benefits" header — one item per bullet, no elaboration needed. If none provided, omit this section entirely.
 
 6. CALL TO ACTION: End with exactly this line, nothing else after it:
 Apply now.
