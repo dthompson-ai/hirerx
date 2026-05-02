@@ -7,19 +7,26 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! })
 
 export async function POST(request: Request) {
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const { data: { user }, error: authError } = await supabase.auth.getUser()
+  if (!user) {
+    console.error('[assemble] auth failed', authError)
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
 
   const { jobAdId, elements, jobTitle } = await request.json()
+  console.log('[assemble] request for job', jobAdId, 'user', user.id)
 
-  const { data: jobAd } = await supabase
+  const { data: jobAd, error: jobError } = await supabase
     .from('job_ads')
     .select('*')
     .eq('id', jobAdId)
     .eq('user_id', user.id)
     .single()
 
-  if (!jobAd) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+  if (!jobAd) {
+    console.error('[assemble] job not found', jobAdId, jobError)
+    return NextResponse.json({ error: 'Not found' }, { status: 404 })
+  }
 
   const { data: profile } = await supabase
     .from('profiles')
@@ -71,11 +78,13 @@ FORMAT: Plain text only. No markdown, no asterisks, no bold markers. Use simple 
 
 OUTPUT THE JOB AD NOW:`
 
+  console.log('[assemble] calling Anthropic for job', jobAdId)
   const message = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 2048,
     messages: [{ role: 'user', content: prompt }],
   })
+  console.log('[assemble] Anthropic responded')
 
   const content = message.content[0]
   if (content.type !== 'text') {

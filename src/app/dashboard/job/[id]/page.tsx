@@ -149,6 +149,7 @@ export default function JobAdPage({ params, searchParams }: {
     initialStep === 'review' ? 'review' : 'output'
   )
   const [assembling, setAssembling] = useState(false)
+  const [assembleError, setAssembleError] = useState('')
   const [copied, setCopied] = useState(false)
   const [loading, setLoading] = useState(true)
 
@@ -190,16 +191,25 @@ export default function JobAdPage({ params, searchParams }: {
 
   async function handleAssemble() {
     setAssembling(true)
-    const res = await fetch('/api/job-ads/assemble', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jobAdId: id, elements, jobTitle }),
-    })
-    const { output } = await res.json()
-
-    setJobAd(prev => prev ? { ...prev, final_output: output, status: 'complete' } : prev)
-    setView('output')
-    setAssembling(false)
+    setAssembleError('')
+    try {
+      const res = await fetch('/api/job-ads/assemble', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jobAdId: id, elements, jobTitle }),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        throw new Error(body.error || `Server error ${res.status}`)
+      }
+      const { output } = await res.json()
+      setJobAd(prev => prev ? { ...prev, final_output: output, status: 'complete' } : prev)
+      setView('output')
+    } catch (err) {
+      setAssembleError(err instanceof Error ? err.message : 'Something went wrong. Try again.')
+    } finally {
+      setAssembling(false)
+    }
   }
 
   async function handleCopy() {
@@ -326,6 +336,12 @@ export default function JobAdPage({ params, searchParams }: {
                 </div>
               )}
             </div>
+
+            {assembleError && (
+              <div className="bg-red-50 border border-red-100 text-red-600 text-sm rounded-xl px-4 py-3">
+                {assembleError}
+              </div>
+            )}
 
             <button
               onClick={handleAssemble}

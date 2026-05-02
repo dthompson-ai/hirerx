@@ -6,19 +6,27 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! })
 
 export async function POST(request: Request) {
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const { data: { user }, error: authError } = await supabase.auth.getUser()
+  if (!user) {
+    console.error('[extract] auth failed', authError)
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
 
   const { jobAdId } = await request.json()
+  console.log('[extract] request for job', jobAdId, 'user', user.id)
 
-  const { data: jobAd } = await supabase
+  const { data: jobAd, error: jobError } = await supabase
     .from('job_ads')
     .select('*')
     .eq('id', jobAdId)
     .eq('user_id', user.id)
     .single()
 
-  if (!jobAd) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+  if (!jobAd) {
+    console.error('[extract] job not found', jobAdId, jobError)
+    return NextResponse.json({ error: 'Not found' }, { status: 404 })
+  }
+  console.log('[extract] calling Anthropic for job', jobAdId)
 
   const { data: profile } = await supabase
     .from('profiles')
